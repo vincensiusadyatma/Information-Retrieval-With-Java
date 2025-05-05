@@ -12,6 +12,7 @@ public class ReadFile {
     private String path;
     private File folder;
     private Scanner input;
+    private InvertedIndex invertedMap = new InvertedIndex();
 
     public ReadFile(String path){
         this.path = path;
@@ -22,7 +23,7 @@ public class ReadFile {
       if (folder.exists()) {
         if (folder.isDirectory()) {
             String[] listDocs = folder.list();
-            
+
             Arrays.sort(listDocs, (x, y) -> {
                 int numX = Integer.parseInt(x.replaceAll("[^0-9]", ""));
                 int numY = Integer.parseInt(y.replaceAll("[^0-9]", ""));
@@ -30,7 +31,6 @@ public class ReadFile {
             });
             
             for (String docs : listDocs) {
-                System.out.print(docs.substring(0,docs.lastIndexOf(".")) + " : ");
                 try {
                     input = new Scanner(new BufferedReader(new FileReader(folder.getAbsolutePath() + "//" + docs)));
                     try {
@@ -38,7 +38,7 @@ public class ReadFile {
                         while (input.hasNext()) {
                             temp += input.nextLine();
                         }
-                        Tokenizer.tokenize(temp);
+                        invertedMap.addTerm(docs, Tokenizer.tokenize(temp));
                     }catch (NoSuchElementException e) {
                         System.out.println("File Improperly Formed");
                     }catch(IllegalStateException e){
@@ -50,6 +50,10 @@ public class ReadFile {
             }
         }
       }
+    }
+
+    public void getInvertedMap(){
+        System.out.println(invertedMap.getMap().entrySet());
     }
 
 }
