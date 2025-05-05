@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.SortedSet;
 
 public class ReadFile {
     private String path;
@@ -55,7 +56,7 @@ public class ReadFile {
     }
 
    public void printMap() {
-    for (Map.Entry<String, Set<String>> entryMap : invertedMap.getMap().entrySet()) {
+    for (Map.Entry<String, SortedSet<String>> entryMap : this.invertedMap.getMap().entrySet()) {
         System.out.println(entryMap.getKey() + " => " + entryMap.getValue() + " => " + entryMap.getValue().size());
     }
 }

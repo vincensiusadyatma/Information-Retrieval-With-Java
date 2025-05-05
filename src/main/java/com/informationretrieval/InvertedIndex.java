@@ -1,12 +1,14 @@
 package com.informationretrieval;
 
 import java.util.HashMap;
-import java.util.HashSet;
+
 import java.util.Map;
-import java.util.Set;
+
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 public class InvertedIndex {
-    private Map<String,Set<String>> invertedMap = new HashMap<>();
+    private Map<String,SortedSet<String>> invertedMap = new HashMap<>();
 
     public void addTerm(String docs, String[] tokens){
         System.out.println(docs.substring(0,docs.lastIndexOf(".")) + " : " + tokens.length);
@@ -15,13 +17,13 @@ public class InvertedIndex {
             if (invertedMap.containsKey(token)) {
                 invertedMap.get(token).add(docs);
             }else{
-                invertedMap.put(token, new HashSet<>());
+                invertedMap.put(token, new TreeSet<>());
                 invertedMap.get(token).add(docs);
             }
         }
     }
 
-    public Map<String,Set<String>> getMap(){
+    public Map<String,SortedSet<String>> getMap(){
         return this.invertedMap;
     }
 
