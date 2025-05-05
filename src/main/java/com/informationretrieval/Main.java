@@ -4,6 +4,6 @@ public class Main {
     public static void main(String[] args) {
         ReadFile readCorpus = new ReadFile("documents");
         readCorpus.read();
-        readCorpus.getInvertedMap();
+        readCorpus.printMap();
     }
 }

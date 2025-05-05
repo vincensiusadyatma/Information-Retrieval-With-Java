@@ -5,8 +5,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.Set;
 
 public class ReadFile {
     private String path;
@@ -52,8 +54,11 @@ public class ReadFile {
       }
     }
 
-    public void getInvertedMap(){
-        System.out.println(invertedMap.getMap().entrySet());
+   public void printMap() {
+    for (Map.Entry<String, Set<String>> entryMap : invertedMap.getMap().entrySet()) {
+        System.out.println(entryMap.getKey() + " => " + entryMap.getValue() + " => " + entryMap.getValue().size());
     }
+}
+
 
 }
