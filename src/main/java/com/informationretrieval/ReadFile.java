@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -21,7 +23,8 @@ public class ReadFile {
         this.folder = new File(this.path);
     }
 
-    public void read(){
+    public List<Term> read(){
+      List<Term> term_list = new ArrayList<>();
       if (folder.exists()) {
         if (folder.isDirectory()) {
             String[] listDocs = folder.list();
@@ -33,14 +36,22 @@ public class ReadFile {
             });
             
             for (String docs : listDocs) {
+             
                 try {
                     input = new Scanner(new BufferedReader(new FileReader(folder.getAbsolutePath() + "//" + docs)));
+                    docs =  docs.substring(0,docs.lastIndexOf('.')).toLowerCase();
                     try {
                         String temp = "";
                         while (input.hasNext()) {
                             temp += input.nextLine();
                         }
-                        invertedMap.addTerm(docs, Tokenizer.tokenize(temp));
+                        for (String token : Tokenizer.tokenize(temp)) {
+                            Term term = new Term(token);
+                            Document document_object = new Document(docs);
+                            term.addDoc(document_object);
+                            term_list.add(term);
+                        }
+                        // invertedMap.addTerm(docs, Tokenizer.tokenize(temp));
                     }catch (NoSuchElementException e) {
                         System.out.println("File Improperly Formed");
                     }catch(IllegalStateException e){
@@ -52,6 +63,7 @@ public class ReadFile {
             }
         }
       }
+      return term_list;
     }
 
    public void printMap() {

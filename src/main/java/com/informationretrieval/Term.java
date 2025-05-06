@@ -1,11 +1,13 @@
 package com.informationretrieval;
 
+import java.util.List;
+
 public class Term {
     private String name;
     private int df;
     private int idf;
 
-    private DoclistOrdered<String> DocOrdered = new DoclistOrdered<>(); 
+    private DoclistOrdered<Document> DocOrdered = new DoclistOrdered<>(); 
 
     public Term(String name){
         this.name = name;
@@ -33,4 +35,14 @@ public class Term {
     public void setIdf(int value) {
       this.idf = value;
     }
+
+    public void addDoc(Document doc){
+      this.DocOrdered.addSort(doc);
+    }
+
+    public List<Document> getDocList(){
+        return this.DocOrdered;
+    }
+
+    
 }
