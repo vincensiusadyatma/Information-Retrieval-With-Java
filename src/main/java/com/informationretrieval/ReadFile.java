@@ -45,12 +45,21 @@ public class ReadFile {
                         while (input.hasNext()) {
                             temp += input.nextLine();
                         }
+                        System.out.println(Tokenizer.tokenize(temp).length);
                         for (String token : Tokenizer.tokenize(temp)) {
-                            Term term = new Term(token);
                             Document document_object = new Document(docs);
-                            term.addDoc(document_object);
-                            term_list.add(term);
+                            for (Term term : term_list) {
+                                if (token.equals(term.getName())) {
+                                    term.addDoc(document_object);
+                                    break;
+                                }
+                            }
+                            Term term_object = new Term(token);
+                            term_object.addDoc(document_object);
+                            term_list.add(term_object);
+                            
                         }
+                       
                         // invertedMap.addTerm(docs, Tokenizer.tokenize(temp));
                     }catch (NoSuchElementException e) {
                         System.out.println("File Improperly Formed");

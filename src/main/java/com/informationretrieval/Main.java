@@ -1,9 +1,11 @@
 package com.informationretrieval;
 
+import java.util.ArrayList;
+import java.util.List;
 public class Main {
     public static void main(String[] args) {
         ReadFile readCorpus = new ReadFile("documents");
-        System.out.println( readCorpus.read().get(0).getDocList().get(0).getName());
+        System.out.println( readCorpus.read().get(1).getDocList().size());
         // readCorpus.printMap();
         // DoclistOrdered<String> ordered1 = new DoclistOrdered<>();
      
@@ -18,5 +20,11 @@ public class Main {
 
         // tabel1.addTerm(null);
         // // System.out.println(ordered1.toString());
+   
+        // List<Integer> listAngka = new ArrayList<>();
+        // for (int i : listAngka) {
+        //     System.out.println(i);
+        // }
+
     }
 }

@@ -3,14 +3,18 @@ package com.informationretrieval;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class DoclistOrdered<T> extends LinkedList<T> {
+public class DoclistOrdered<T extends Comparable> extends LinkedList<T> {
     public boolean addSort(T doc){
         ListIterator<T> iterator = this.listIterator();
         while (iterator.hasNext()) {
             T temp = iterator.next();
             // System.out.println(temp);
+            if (temp.compareTo(doc) == 0) {
+                // Nilai sama, tidak ditambahkan
+                return false;
+            }
             
-            if (((Comparable) temp).compareTo(doc) > 0) {
+            if (temp.compareTo(doc) > 0 ) {
                 iterator.previous();
                 iterator.add(doc);
                 return true;

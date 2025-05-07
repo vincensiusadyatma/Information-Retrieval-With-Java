@@ -1,6 +1,6 @@
 package com.informationretrieval;
 
-public class Document {
+public class Document implements Comparable<Document> {
     private String name;
     private int tf;
 
@@ -23,5 +23,8 @@ public class Document {
 
     public int getTf(){
         return this.tf;
+    }
+    public int compareTo(Document other_doc) {
+        return this.name.compareTo(other_doc.name);
     }
 }

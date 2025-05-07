@@ -2,7 +2,7 @@ package com.informationretrieval;
 
 import java.util.List;
 
-public class Term {
+public class Term implements Comparable<Term> {
     private String name;
     private int df;
     private int idf;
@@ -43,6 +43,10 @@ public class Term {
     public List<Document> getDocList(){
         return this.DocOrdered;
     }
+
+    public int compareTo(Term other_doc) {
+      return this.name.compareTo(other_doc.name);
+  }
 
     
 }
