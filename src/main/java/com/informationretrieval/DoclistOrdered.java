@@ -10,7 +10,6 @@ public class DoclistOrdered<T extends Comparable> extends LinkedList<T> {
             T temp = iterator.next();
             // System.out.println(temp);
             if (temp.compareTo(doc) == 0) {
-                // Nilai sama, tidak ditambahkan
                 return false;
             }
             
