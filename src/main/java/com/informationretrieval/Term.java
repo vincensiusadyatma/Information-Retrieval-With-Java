@@ -5,7 +5,7 @@ import java.util.List;
 public class Term implements Comparable<Term> {
     private String name;
     private int df;
-    private int idf;
+    private double idf;
 
     private DoclistOrdered<Document> DocOrdered = new DoclistOrdered<>(); 
 
@@ -29,7 +29,7 @@ public class Term implements Comparable<Term> {
       this.df = value;
     }
 
-    public int getIdf() {
+    public double getIdf() {
       return this.idf;
     }
     public void setIdf(int value) {
@@ -51,6 +51,10 @@ public class Term implements Comparable<Term> {
 
     public void calculateDF(){
       this.df = DocOrdered.size();
+    }
+
+    public void calculateIDF(int totaldocs){
+      this.idf = Math.log10(totaldocs/this.DocOrdered.size());
     }
 
     

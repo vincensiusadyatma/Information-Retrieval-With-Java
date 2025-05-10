@@ -55,11 +55,13 @@ public class ReadFile {
                             for (Term term : term_list) {
                                 if (token.equals(term.getName())) {
                                     term.addDoc(document_object);
+                                    term.calculateIDF(listDocs.length);
                                     break;
                                 }
                             }
                             Term term_object = new Term(token);
                             term_object.addDoc(document_object);
+                            term_object.calculateIDF(listDocs.length);
                             term_list.add(term_object);
                             
                         }
