@@ -1,11 +1,13 @@
 package com.informationretrieval;
 
-import java.util.ArrayList;
-import java.util.List;
+// import java.util.ArrayList;
+// import java.util.List;
 public class Main {
     public static void main(String[] args) {
+     
         ReadFile readCorpus = new ReadFile("documents");
-        System.out.println( readCorpus.read().get(1).getDocList().size());
+        System.out.println(readCorpus.read().get(14).getDf());
+        System.out.println( readCorpus.read().get(14).getDocList().get(2).getTf());
         // readCorpus.printMap();
         // DoclistOrdered<String> ordered1 = new DoclistOrdered<>();
      

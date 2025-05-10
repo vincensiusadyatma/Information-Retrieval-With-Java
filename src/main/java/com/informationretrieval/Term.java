@@ -38,6 +38,7 @@ public class Term implements Comparable<Term> {
 
     public void addDoc(Document doc){
       this.DocOrdered.addSort(doc);
+      calculateDF();
     }
 
     public List<Document> getDocList(){
@@ -46,7 +47,11 @@ public class Term implements Comparable<Term> {
 
     public int compareTo(Term other_doc) {
       return this.name.compareTo(other_doc.name);
-  }
+    }
+
+    public void calculateDF(){
+      this.df = DocOrdered.size();
+    }
 
     
 }
