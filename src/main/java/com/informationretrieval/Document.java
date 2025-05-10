@@ -27,4 +27,12 @@ public class Document implements Comparable<Document> {
     public int compareTo(Document other_doc) {
         return this.name.compareTo(other_doc.name);
     }
+
+    public void calculateTF(String token,String[] tokens){
+        for (String term : tokens) {
+            if (term.equals(token)) {
+                this.tf++;
+            }
+        }
+    }
 }

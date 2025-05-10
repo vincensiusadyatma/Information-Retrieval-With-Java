@@ -45,9 +45,13 @@ public class ReadFile {
                         while (input.hasNext()) {
                             temp += input.nextLine();
                         }
-                        System.out.println(Tokenizer.tokenize(temp).length);
-                        for (String token : Tokenizer.tokenize(temp)) {
+                        // System.out.println(Tokenizer.tokenize(temp).length);
+                        String[] tokens = Tokenizer.tokenize(temp);
+                        for (String token : tokens) {
                             Document document_object = new Document(docs);
+                            //menghitung tf
+                            document_object.calculateTF(token,tokens);
+                            //mencari term yang pernah ada, jika ada maka hanya tinggal menambahkan doc
                             for (Term term : term_list) {
                                 if (token.equals(term.getName())) {
                                     term.addDoc(document_object);
