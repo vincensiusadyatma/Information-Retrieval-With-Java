@@ -7,24 +7,26 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.SortedSet;
+
 
 public class ReadFile {
     private String path;
     private File folder;
     private Scanner input;
-    private InvertedIndex invertedMap = new InvertedIndex();
+
 
     public ReadFile(String path){
         this.path = path;
         this.folder = new File(this.path);
     }
 
-    public List<Term> read(){
+    public InvertedIndex read(){
       List<Term> term_list = new ArrayList<>();
+      InvertedIndex invertedList = new InvertedIndex();
+
       if (folder.exists()) {
         if (folder.isDirectory()) {
             String[] listDocs = folder.list();
@@ -52,15 +54,17 @@ public class ReadFile {
                             //menghitung tf
                             document_object.calculateTF(token,tokens);
                             //mencari term yang pernah ada, jika ada maka hanya tinggal menambahkan doc
-                            for (Term term : term_list) {
+                            for (Term term : invertedList.getInvertedList()) {
                                 if (token.equals(term.getName())) {
                                     term.addDoc(document_object);
+                                    term.calculateIDF(listDocs.length);
                                     break;
                                 }
                             }
                             Term term_object = new Term(token);
                             term_object.addDoc(document_object);
-                            term_list.add(term_object);
+                            term_object.calculateIDF(listDocs.length);
+                            invertedList.addTerm(term_object);
                             
                         }
                        
@@ -76,14 +80,11 @@ public class ReadFile {
             }
         }
       }
-      return term_list;
+      return invertedList;
     }
 
-   public void printMap() {
-    for (Map.Entry<String, SortedSet<String>> entryMap : this.invertedMap.getMap().entrySet()) {
-        System.out.println(entryMap.getKey() + " => " + entryMap.getValue() + " => " + entryMap.getValue().size());
-    }
+  
 }
 
 
-}
+
