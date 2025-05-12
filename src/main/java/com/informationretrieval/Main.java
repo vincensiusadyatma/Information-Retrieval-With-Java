@@ -6,8 +6,8 @@ public class Main {
     public static void main(String[] args) {
      
         ReadFile readCorpus = new ReadFile("documents");
-        System.out.println(readCorpus.read().get(14).getIdf());
-        System.out.println( readCorpus.read().get(14).getDocList().get(2).getTf());
+        InvertedIndex invertedListCorpus = readCorpus.read();
+        System.out.println(invertedListCorpus.computeTFIDF());
         // readCorpus.printMap();
         // DoclistOrdered<String> ordered1 = new DoclistOrdered<>();
      
