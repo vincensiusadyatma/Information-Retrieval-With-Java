@@ -7,7 +7,8 @@ public class Main {
      
         ReadFile readCorpus = new ReadFile("documents");
         InvertedIndex invertedListCorpus = readCorpus.read();
-        System.out.println(invertedListCorpus.computeTFIDF());
+        // System.out.println(invertedListCorpus.computeTFIDF());
+        System.out.println(invertedListCorpus.computeTFIDFquery("saya sedang api"));
         // readCorpus.printMap();
         // DoclistOrdered<String> ordered1 = new DoclistOrdered<>();
      
