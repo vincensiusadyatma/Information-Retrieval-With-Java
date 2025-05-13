@@ -11,7 +11,9 @@ public class Main {
         // System.out.println(invertedListCorpus.computeTFIDF());
         // System.out.println(invertedListCorpus.computeTFIDFquery("semarang"));
         CosineSimilarity similarity = new CosineSimilarity();
-        System.out.println(similarity.countVectorLenght(invertedListCorpus.computeTFIDF()));
+        similarity.compute(invertedListCorpus.computeTFIDF(), invertedListCorpus.computeTFIDFquery("aku suka main api dengan teman saya"));
+        similarity.printResult();
+        // System.out.println(similarity.countVectorLenght(invertedListCorpus.computeTFIDF()));
         // readCorpus.printMap();
         // DoclistOrdered<String> ordered1 = new DoclistOrdered<>();
      
