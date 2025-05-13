@@ -54,7 +54,7 @@ public class Term implements Comparable<Term> {
     }
 
     public void calculateIDF(int totaldocs){
-      this.idf = Math.log10(totaldocs/this.DocOrdered.size());
+      this.idf = Math.log10( (double) totaldocs/this.DocOrdered.size());
     }
 
     
