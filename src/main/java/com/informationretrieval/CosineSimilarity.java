@@ -67,13 +67,13 @@ public class CosineSimilarity {
                     docVectorList.put(docKey,Math.pow(tfidfValue, 2));
                 }
             }
-
-            //melakukan akar pada hasil penjumlahan tf idf
-            for (Map.Entry<String, Double> vector_entry : docVectorList.entrySet()) {
-                Double finalLenght = Math.sqrt(vector_entry.getValue());
-                docVectorList.put(vector_entry.getKey(), finalLenght);
-            }
         }
+         //melakukan akar pada hasil penjumlahan tf idf
+        for (Map.Entry<String, Double> vector_entry : docVectorList.entrySet()) {
+            Double finalLenght = Math.sqrt(vector_entry.getValue());
+            docVectorList.put(vector_entry.getKey(), finalLenght);
+        }
+        
         return docVectorList;
     }
 
