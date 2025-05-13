@@ -7,8 +7,11 @@ public class Main {
      
         ReadFile readCorpus = new ReadFile("documents");
         InvertedIndex invertedListCorpus = readCorpus.read();
+        
         // System.out.println(invertedListCorpus.computeTFIDF());
-        System.out.println(invertedListCorpus.computeTFIDFquery("saya sedang api"));
+        // System.out.println(invertedListCorpus.computeTFIDFquery("semarang"));
+        CosineSimilarity similarity = new CosineSimilarity();
+        System.out.println(similarity.countVectorLenght(invertedListCorpus.computeTFIDF()));
         // readCorpus.printMap();
         // DoclistOrdered<String> ordered1 = new DoclistOrdered<>();
      

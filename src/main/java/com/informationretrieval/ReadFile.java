@@ -49,6 +49,7 @@ public class ReadFile {
                         }
                         // System.out.println(Tokenizer.tokenize(temp).length);
                         String[] tokens = Tokenizer.tokenize(temp);
+                        
                         for (String token : tokens) {
                             Document document_object = new Document(docs);
                             //menghitung tf
